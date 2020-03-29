@@ -1,0 +1,51 @@
+<mat-toolbar class="toolbar" color="primary">
+  <div>
+    <span>Pielegniarka App</span>
+  </div>
+  <div>
+    <span>Dodaj pracownika</span>
+  </div>
+</mat-toolbar>
+<mat-card style="width:30%; margin: 0 auto; margin-top: 20px;">
+  <form (submit)="onAddNewWorker(postForm)" #postForm="ngForm">
+    <mat-form-field style="display:block">
+      <mat-label>Imię</mat-label>
+      <input ngModel
+             name="imie"
+             type="text"
+             required
+             #imie="ngModel"
+             matInput>
+      <mat-error *ngIf="imie.hasError('required')">
+        Imie is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Nazwisko</mat-label>
+      <input ngModel
+             required
+             name="nazwisko"
+             type="text"
+             #nazwisko="ngModel"
+             matInput>
+      <mat-error *ngIf="nazwisko.hasError('required')">
+        Nazwisko is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Typ umowy</mat-label>
+      <input ngModel
+             required
+             name="typUmowy"
+             type="text"
+             #typUmowy="ngModel"
+             matInput>
+      <mat-error *ngIf="typUmowy.hasError('required')">
+        Typ umowy is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div id="add-new-worker">
+      <button color="primary" mat-raised-button>Dodaj</button>
+    </div>
+  </form>
+</mat-card>

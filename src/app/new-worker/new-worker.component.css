@@ -1,0 +1,12 @@
+.toolbar{
+  display:flex;
+  justify-content: space-between;
+}
+#add-new-worker{
+  width:100%;
+  overflow: hidden;
+}
+#add-new-worker button{
+  float: right;
+  margin: 10px 3px 3px 0px;
+}

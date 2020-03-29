@@ -1,0 +1,12 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <div><button routerLink="dodaj-zlecenie" routerLinkActive="active" mat-button>Dodaj zlecenie</button></div>
+    <div><button routerLink="otwarte-zlecenia" mat-button>Otwarte zlecenia</button></div>
+    <div><button routerLink="pracownicy" mat-button>Pracownicy</button></div>
+    <div><button routerLink="pacjenci" mat-button>Pacjenci</button></div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

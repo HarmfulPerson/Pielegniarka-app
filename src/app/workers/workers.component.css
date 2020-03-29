@@ -1,0 +1,19 @@
+.toolbar{
+  display:flex;
+  justify-content: space-between;
+}
+table{
+  width: 100%;
+}
+#table-container{
+  width:90%;
+  margin: 20px auto;
+}
+#add-new-worker{
+  width:100%;
+  overflow: hidden;
+}
+#add-new-worker button{
+  float: right;
+  margin: 10px 3px 3px 0px;
+}

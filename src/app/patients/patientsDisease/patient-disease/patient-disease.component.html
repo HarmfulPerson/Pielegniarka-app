@@ -1,0 +1,47 @@
+<mat-toolbar class="toolbar" color="primary">
+  <div>
+    <span>Pielegniarka App</span>
+  </div>
+  <div>
+    <span>Historia chorób</span>
+  </div>
+</mat-toolbar>
+<mat-card id="table-container">
+  <table mat-table [dataSource]="diseases" *ngIf="diseases.length > 0"let i = index>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element;let i = index;"> {{i+1}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="startedAt">
+      <th mat-header-cell *matHeaderCellDef> Started at </th>
+      <td mat-cell *matCellDef="let element"> {{element.startedAt}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="days">
+      <th mat-header-cell *matHeaderCellDef> Days of treatment </th>
+      <td mat-cell *matCellDef="let element"> {{element.daysOfTreatment}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="takenMedicine">
+      <th mat-header-cell *matHeaderCellDef> Taken medicine </th>
+      <td mat-cell *matCellDef="let element"> {{element.typeOfMedicine}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="typeOfDisease">
+      <th mat-header-cell *matHeaderCellDef> Type of disease </th>
+      <td mat-cell *matCellDef="let element"> {{element.typeOfDisease}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="inProgress">
+      <th mat-header-cell *matHeaderCellDef> In progress </th>
+      <td mat-cell *matCellDef="let element"> {{element.inProgress}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <div style="text-align: center; font-weight: bold" *ngIf="diseases.length === 0">This patient has no disease history.</div>
+</mat-card>

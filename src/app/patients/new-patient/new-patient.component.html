@@ -1,0 +1,98 @@
+<mat-toolbar class="toolbar" color="primary">
+  <div>
+    <span>Pielegniarka App</span>
+  </div>
+  <div>
+    <span>Dodaj pacjenta</span>
+  </div>
+</mat-toolbar>
+<mat-card style="width:30%; margin: 0 auto; margin-top: 20px;">
+  <form (submit)="onAddNewPatient(postForm)" #postForm="ngForm">
+    <mat-form-field style="display:block">
+      <mat-label>Imię</mat-label>
+      <input ngModel
+             name="name"
+             type="text"
+             required
+             #imie="ngModel"
+             matInput>
+      <mat-error *ngIf="imie.hasError('required')">
+        Imie is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Nazwisko</mat-label>
+      <input ngModel
+             required
+             name="surname"
+             type="text"
+             #nazwisko="ngModel"
+             matInput>
+      <mat-error *ngIf="nazwisko.hasError('required')">
+        Nazwisko is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Wiek</mat-label>
+      <input ngModel
+             required
+             name="age"
+             type="number"
+             #wiek="ngModel"
+             matInput>
+      <mat-error *ngIf="wiek.hasError('required')">
+        Wiek is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Ulica</mat-label>
+      <input ngModel
+             required
+             name="street"
+             type="text"
+             #ulica="ngModel"
+             matInput>
+      <mat-error *ngIf="ulica.hasError('required')">
+        Ulica is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Nr bloku</mat-label>
+      <input ngModel
+             required
+             name="houseNumber"
+             type="number"
+             #blok="ngModel"
+             matInput>
+      <mat-error *ngIf="blok.hasError('required')">
+        Nr Bloku is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Nr mieszkania</mat-label>
+      <input ngModel
+             name="localNumber"
+             type="number"
+             #mieszkanie="ngModel"
+             matInput>
+      <mat-error *ngIf="mieszkanie.hasError('required')">
+        Nr Bloku is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Miasto</mat-label>
+      <input ngModel
+             required
+             name="city"
+             type="text"
+             #miasto="ngModel"
+             matInput>
+      <mat-error *ngIf="miasto.hasError('required')">
+        Miasto is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div id="add-new-worker">
+      <button [disabled]="postForm.invalid" color="primary" mat-raised-button>Dodaj</button>
+    </div>
+  </form>
+</mat-card>

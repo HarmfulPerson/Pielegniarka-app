@@ -1,0 +1,12 @@
+.toolbar{
+  display:flex;
+  justify-content: space-between;
+}
+table{
+  width: 100%;
+}
+#table-container{
+  width:90%;
+  margin: 20px auto;
+}
+

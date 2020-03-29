@@ -1,0 +1,70 @@
+<mat-toolbar class="toolbar" color="primary">
+  <div>
+    <span>Pielegniarka App</span>
+  </div>
+  <div>
+    <span>Dodaj zlecenie</span>
+  </div>
+</mat-toolbar>
+<mat-card style="width:30%; margin: 0 auto; margin-top: 20px">
+  <form (ngSubmit)="createNewZlecenie()" [formGroup]="newZlecenie">
+    <mat-form-field style="width:100%" class="name-surname">
+      <input
+        required
+        type="text"
+        name="controlPatients"
+        placeholder="Imię i nazwisko pacjenta"
+        matInput [matAutocomplete]="patients"
+        formControlName="controlPatients"/>
+      <mat-autocomplete #patients="matAutocomplete"
+                        [displayWith]="displayPatients">
+        <mat-option *ngFor="let option of filteredPatients | async; let i = index" [value]="option">
+          {{i+1}}. {{option.name | uppercase}}  {{option.surname | uppercase}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error style="font-weight: bold" *ngIf="newZlecenie.get('controlPatients').invalid">{{getErrorMessage('controlPatients')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Rodzaj leku</mat-label>
+      <mat-select
+                  formControlName="lek"
+                  required>
+        <mat-option *ngFor="let summary of summaries; let i = index" [value]="summaries[i]">
+          {{summary}}
+        </mat-option>
+      </mat-select>
+      <mat-error style="font-weight: bold" *ngIf="newZlecenie.get('lek').invalid">{{getErrorMessage('lek')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Rodzaj choroby</mat-label>
+      <input
+             formControlName="choroba"
+             type="text"
+             matInput>
+      <mat-error style="font-weight: bold" *ngIf="newZlecenie.get('choroba').invalid">{{getErrorMessage('choroba')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="display:block">
+      <mat-label>Ile Dni?</mat-label>
+      <input
+             required
+             formControlName="dni"
+             type="number"
+             matInput>
+      <mat-error style="font-weight: bold" *ngIf="newZlecenie.get('dni').invalid">{{getErrorMessage('dni')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="width:100%" class="name-surname">
+      <input type="text"
+             placeholder="Imię i nazwisko pracownika"
+             required
+             matInput [matAutocomplete]="workers"
+             formControlName="controlWorkers"/>
+      <mat-autocomplete #workers="matAutocomplete" [displayWith]="displayWorkers">
+        <mat-option *ngFor="let option of filteredWorkers | async; let i = index" [value]="option">
+          {{i+1}}. {{option.name}}  {{option.surname}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error style="font-weight: bold" *ngIf="newZlecenie.get('controlWorkers').invalid">{{getErrorMessage('controlWorkers')}}</mat-error>
+    </mat-form-field>
+      <button color="primary" type="submit" [disabled]="!newZlecenie.valid" mat-button>Dodaj wniosek</button>
+  </form>
+</mat-card>
